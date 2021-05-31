@@ -7,7 +7,7 @@
     "url": "git+https://github.com/doongseal/wetube-reloaded.git"
   },
   "scripts": {
-    "dev": "nodemon -L --exec  babel-node index.js"
+    "dev": "nodemon -L --exec  babel-node src/index.js"
   },
   "author": "doongseal",
   "license": "ISC",
@@ -16,7 +16,8 @@
   },
   "homepage": "https://github.com/doongseal/wetube-reloaded#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
