@@ -6,15 +6,18 @@ const PORT = 4000;
 
 import globalRouter from "./routers/globalRouter";
 import usersRouter from "./routers/usersRouter";
-import storiesRouter from "./routers/storiesRouter";
+import videosRouter from "./routers/videosRouter";
 
 const app = express();
+app.set("view engine","pug");
+app.set("views", process.cwd()+"/src/views");
 app.use(morgan("dev"));
+app.use(express.urlencoded({extended:true}));
 
 
 app.use("/", globalRouter);
 app.use("/users", usersRouter);
-app.use("/stories", storiesRouter);
+app.use("/videos", videosRouter);
 
 
 
@@ -22,4 +25,4 @@ app.use("/stories", storiesRouter);
 const handelListening = () => console.log(`Server Listening on port http://localhost:${PORT}`)
 
 
-app.listen(PORT, handelListening)
+app.listen(4300, handelListening)

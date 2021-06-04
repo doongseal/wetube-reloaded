@@ -1,0 +1,11 @@
+extends base.pug
+include mixins/video
+
+
+
+
+block content
+    h6 Change Title of Video
+    form(method="POST")
+        input(name="title",placeholder="Video Title", value = video.title, required)
+        input(value="Save",type="submit")
