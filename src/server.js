@@ -2,6 +2,7 @@
 import express from "express";
 import morgan from "morgan";
 
+
 const PORT = 4000;
 
 import globalRouter from "./routers/globalRouter";
@@ -20,9 +21,5 @@ app.use("/users", usersRouter);
 app.use("/videos", videosRouter);
 
 
+export default app
 
-
-const handelListening = () => console.log(`Server Listening on port http://localhost:${PORT}`)
-
-
-app.listen(4300, handelListening)

@@ -5,10 +5,23 @@ html(lang="ko")
         link(rel="stylesheet" href="https://unpkg.com/mvp.css")
     body
         header #{pageTitle}
+        div
+          
+    
+
+        
 
             
             
             
         main
+            nav
+              ul
+                li
+                    a(href="/videos/upload") Upload Video 
+                li
+                    a(href="/") Home
+            
+
             block content
     include partials/footer.pug    
