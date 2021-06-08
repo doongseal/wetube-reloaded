@@ -3,7 +3,7 @@ import express from "express";
 import morgan from "morgan";
 
 
-const PORT = 4000;
+const PORT = 4500;
 
 import globalRouter from "./routers/globalRouter";
 import usersRouter from "./routers/usersRouter";
