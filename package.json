@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/doongseal/wetube-reloaded#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "mongoose": "^5.12.12",
     "morgan": "^1.10.0",
@@ -26,5 +27,6 @@
     "@babel/node": "^7.14.2",
     "@babel/preset-env": "^7.14.2",
     "nodemon": "^2.0.7"
-  }
+  },
+  "main": "index.js"
 }

@@ -5,7 +5,7 @@ import morgan from "morgan";
 
 const PORT = 4500;
 
-import globalRouter from "./routers/globalRouter";
+import rootRouter from "./routers/rootRouter";
 import usersRouter from "./routers/usersRouter";
 import videosRouter from "./routers/videosRouter";
 
@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({extended:true}));
 
 
-app.use("/", globalRouter);
+app.use("/", rootRouter);
 app.use("/users", usersRouter);
 app.use("/videos", videosRouter);
 
