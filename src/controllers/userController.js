@@ -66,20 +66,20 @@ export const startGithubLogin = (req,res) => {
     };
     const params = new URLSearchParams(config).toString();
     const finalUrl = `${baseUrl}?${params}`;
-    console.log(finalUrl);
+    
     return res.redirect(finalUrl)
 };
 
 export const finishGithubLogin = async (req,res) => {
     const baseUrl = "https://github.com/login/oauth/access_token";
-    console.log(baseUrl)
+    
     const config = {
         client_id : process.env.GH_CLIENT,
         client_secret : process.env.GH_SECRET,
         code: req.query.code,
     };
     
-    console.log(config);
+    
     const params = new URLSearchParams(config).toString();
     const finalUrl = `${baseUrl}?${params}`;
 
@@ -101,7 +101,7 @@ export const finishGithubLogin = async (req,res) => {
                 Authorization: `token ${access_token}`
             }
         })).json();
-        console.log(userData);
+        
 
         const emailData = await (
             await fetch (`${apiUrl}/user/emails`, {
@@ -109,7 +109,7 @@ export const finishGithubLogin = async (req,res) => {
                     Authorization: `token ${access_token}`,
                 },
             })).json();
-            console.log(emailData);
+            
             const emailObj = emailData.find(email => email.primary === true && email.verified ===true);
             if(!emailObj){
                 return res.redirect("/login")
