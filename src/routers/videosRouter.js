@@ -10,7 +10,7 @@ videosRouter.get("/:id([0-9a-f]{24})", watch);
 videosRouter.route("/:id([0-9a-f]{24})/edit").all(proetectorMiddleware).get(videoEdit).post(postEdit);
 videosRouter.route("/:id([0-9a-f]{24})/delete").all(proetectorMiddleware).get(deleteVideo)
 videosRouter.all(proetectorMiddleware).get("/upload", getUpload);
-videosRouter.all(proetectorMiddleware).post("/upload",videoUpload.single("video"), postUpload);
+videosRouter.all(proetectorMiddleware).post("/upload", videoUpload.single("video"), postUpload);
 
 
 

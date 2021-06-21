@@ -7,7 +7,7 @@
     "url": "git+https://github.com/doongseal/wetube-reloaded.git"
   },
   "scripts": {
-    "dev:server": "nodemon",
+    "dev:server": "nodemon -L",
     "dev:assets": "webpack --config webpack.config.js"
   },
   "author": "doongseal",
@@ -27,7 +27,8 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "node-fetch": "^2.6.1",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
