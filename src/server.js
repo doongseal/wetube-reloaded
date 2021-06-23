@@ -11,6 +11,7 @@ import rootRouter from "./routers/rootRouter";
 import usersRouter from "./routers/usersRouter";
 import videosRouter from "./routers/videosRouter";
 import {localsMiddleware} from "./middlewares";
+import apiRouter from "./routers/apiRouter";
 
 const app = express();
 app.set("view engine","pug");
@@ -33,6 +34,7 @@ app.use("/assets", express.static("assets"))
 app.use("/", rootRouter);
 app.use("/users", usersRouter);
 app.use("/videos", videosRouter);
+app.use("/api", apiRouter);
 
 
 export default app
