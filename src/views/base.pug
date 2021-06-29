@@ -7,35 +7,10 @@ html(lang="ko")
         script(src="https://kit.fontawesome.com/6ade36b36a.js",crossorgin="anoymous", defer)
       
     body
-        header #{pageTitle}
-        div
-           
+        include partials/header
         main
-            nav
-              ul
-                
-                li
-                    a(href="/") Home
-                li
-                    a(href="/search") Search
-                
-                if loggedIn
-                    li
-                        a(href="/users/edit") Edit Profile
-                    li 
-                        a(href="/users/logout") Log out
-                    li
-                        a(href="/videos/upload") Upload Video 
-                    
-                else
-                    li
-                        a(href="/join") Join    
-                    li 
-                        a(href="/login") Login
-
-
             block content
-    include partials/footer.pug    
+        include partials/footer.pug    
 script(src="/static/js/main.js")
 block scripts
     

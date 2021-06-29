@@ -2,6 +2,7 @@
 import User from "../models/User";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
+import Video from "../models/Video";
 
 
 
@@ -90,7 +91,7 @@ export const finishGithubLogin = async (req,res) => {
             Accept : "application/json",
         },
     })).json();
-    console.log(tokenRequest);
+    
 
     if("access_token" in tokenRequest){
         const { access_token } = tokenRequest;
@@ -151,11 +152,29 @@ export const getEdit = (req,res) => {
 }
 
 export const postEdit = async (req,res) => {
-    const {session : {user: {_id, avatarUrl},},
+    const {
+        session : {user: {_id, avatarUrl, email: sessionEmail, username: sessionUsername}},
     body : {name, email, username, location},
     } = req;
     const file = req.file;
-    console.log(file);
+    
+    let searchParam = [];
+    if (sessionEmail !== email){
+        searchParam.push({email});
+    }
+    if (sessionUsername !== username) {
+        searchParam.push({username});
+    }
+
+    if (searchParam.length > 0) {
+        const foundUser = await User.findOne({$or:searchParam});
+        if (foundUser && foundUser._id.toString() !== _id) {
+            return res.status(400).render("edit-profile", {
+                pageTitle : "Edit Profile",
+                errorMessage : "This username/email is already taken."
+            });
+        }
+    }
 
     const updatedUser = await User.findByIdAndUpdate(
         _id, 
@@ -206,4 +225,13 @@ export const postChangePassword = async (req, res) => {
 
 };
 
-export const profile = (req, res) => res.send("User Profile");
+export const profile = async (req, res) => {
+    const {id} = req.params;
+    const user = await User.findById(id).populate("videos");
+    if (!user) {
+        return res.status(404).render("404", {pageTitle: "User not found."});
+    };
+    
+    return res.render("users/profile", {pageTitle : `${user.name}의 Profile`, user});
+
+};

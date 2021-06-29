@@ -14,6 +14,6 @@ userRouter.route("/change-password").all(proetectorMiddleware).get(getChangePass
 userRouter.get("/github/start",publicOnlyMiddleware, startGithubLogin);
 userRouter.get("/github/finish",publicOnlyMiddleware, finishGithubLogin);
 
-userRouter.get("/:id(\\d+)", profile);
+userRouter.get("/:id", profile);
 
 export default userRouter;
