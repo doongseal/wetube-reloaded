@@ -2,7 +2,7 @@ extends base.pug
 
 block content
     div 
-        vidieo#preview    
+        video#preview       
         button#startBtn Start Recording
     if errorMessage
         span=errorMessage
@@ -16,4 +16,4 @@ block content
         
         input(type="submit", value="Upload Video")
 block scripts
-    script(src="/static/js/recoder.js")
+    script(src="/assets/js/recorder.js")
